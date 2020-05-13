@@ -1,0 +1,8 @@
+blockquote, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, img, input, label, ol, p, pre, span, table {
+
+    position: relative
+
+}
+
+.clearfix           { *zoom: 1 } /* for IE only */
+
