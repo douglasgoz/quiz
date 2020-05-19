@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="pt-br" class="fullscreen-bg">
 <head>
-  <title>uBand - A maior plataforma de gestão de bandas</title>
+  <title>Quiz IDGeek</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -11,9 +11,6 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/login/vendor/linearicons/style.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/login/css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
   <style type="text/css">
       .logo-img { height: 80px; width: auto; top: -30px; position: relative; }
       @media only screen and (min-width: 768px) {  /* Desktop */
@@ -62,11 +59,14 @@
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <? if(@$_GET['acao'] == 'cadastro'){ ?>
     <script type="text/javascript">
-        alertify.alert('<div style="text-align: center">Cadastro realizado com sucesso! <br /> <b style="color: red">Faça o login para continuar...</b></div>');
+        Swal.fire({
+          icon: 'success',
+          title: 'Conta cadastrada! Por favor, faça o login para continuar...'
+        });
     </script>
 <? } ?>
 

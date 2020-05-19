@@ -69,9 +69,16 @@
           {
           }
         });
+        Swal.fire({
+          icon: 'success',
+          title: 'Quiz excluído!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
         setTimeout(function() {
           location.reload();
-        }, 1000); 
+        }, 1500); 
     }); 
   });
 </script>

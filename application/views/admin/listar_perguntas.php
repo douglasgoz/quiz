@@ -63,9 +63,16 @@
           {
           }
         });
+        Swal.fire({
+          icon: 'success',
+          title: 'Pergunta excluída!',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        
         setTimeout(function() {
           location.reload();
-        }, 1000);        
+        }, 1500);        
     }); 
   });
 </script>
