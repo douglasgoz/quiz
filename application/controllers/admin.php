@@ -129,5 +129,13 @@ class Admin extends CI_Controller {
             $this->admin_model->excluirPergunta($id);
         }
     }
+
+    public function excluirUsuario(){
+        $id = $this->input->post('id');
+        if($id != null){
+            $this->admin_model->excluirUsuario($id);
+            $this->admin_model->excluirRespostas($id);
+        }
+    }
     
 }

@@ -10,9 +10,6 @@
 <meta name="robots" content="all,follow">
 <link href="<?php echo base_url();?>assets/css/alerta.css" rel="stylesheet" />
 <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/themes/default.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/themes/semantic.min.css"/>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 
 <style>
@@ -133,7 +130,7 @@
 </body>
 <script src="<?php echo base_url()?>assets/js/popper.min.js"> </script>
 <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </body>
 </html>

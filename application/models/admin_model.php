@@ -26,6 +26,7 @@ class Admin_model extends CI_Model {
     }
 
     function getUsuarios(){
+        $this->db->where('idUsuarios !=', 39);
         return $this->db->get('usuarios')->result();
     }
 
@@ -94,6 +95,26 @@ class Admin_model extends CI_Model {
     function excluirPergunta($ID){
         $this->db->where('idPergunta', $ID);
         $this->db->delete('quiz_perguntas');
+        if ($this->db->affected_rows() == '1')
+        {
+            return TRUE;
+        }       
+        return FALSE;        
+    }
+
+    function excluirUsuario($ID){
+        $this->db->where('idUsuarios', $ID);
+        $this->db->delete('usuarios');
+        if ($this->db->affected_rows() == '1')
+        {
+            return TRUE;
+        }       
+        return FALSE;        
+    }
+
+    function excluirRespostas($ID){
+        $this->db->where('idUsuario', $ID);
+        $this->db->delete('quiz_respostas');
         if ($this->db->affected_rows() == '1')
         {
             return TRUE;
