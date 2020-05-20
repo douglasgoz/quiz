@@ -98,7 +98,7 @@ class Admin extends CI_Controller {
     public function addPergunta(){
         $id = $this->input->post('idQuiz');
         if($id != null){
-            $alternativas = ($this->input->post('a1').','.$this->input->post('a2').','.$this->input->post('a3').','.$this->input->post('a4'));
+            $alternativas = ($this->input->post('a1').'|'.$this->input->post('a2').'|'.$this->input->post('a3').'|'.$this->input->post('a4'));
             $dados = array(
                 'idQuiz' => $id,
                 'pergunta' => $this->input->post('pergunta'),

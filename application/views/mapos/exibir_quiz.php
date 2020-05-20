@@ -88,7 +88,7 @@
                         <fieldset id="pergunta<? echo $r->idPergunta ?>" style="margin-bottom: 30px">
                           <div class="quiz" id="quiz" data-toggle="buttons">
                               <? 
-                              $alternativas = explode(',', $r->alternativas);
+                              $alternativas = explode('|', $r->alternativas);
                               $y = 1;  // Controle da opção selecionada
                               foreach ($alternativas as $a) { ?>
                                 <div class="col-md-10 col-sm-10 col-sm-offset-1 ttt btn-block" data-value="<? echo $y ?>">
