@@ -112,6 +112,16 @@ class Admin_model extends CI_Model {
         return FALSE;        
     }
 
+    function excluirRespostaIndividual($ID){
+        $this->db->where('idResposta', $ID);
+        $this->db->delete('quiz_respostas');
+        if ($this->db->affected_rows() == '1')
+        {
+            return TRUE;
+        }       
+        return FALSE;        
+    }
+
     function excluirRespostas($ID){
         $this->db->where('idUsuario', $ID);
         $this->db->delete('quiz_respostas');
@@ -126,4 +136,15 @@ class Admin_model extends CI_Model {
         $this->db->where('idEmpresa', $this->session->userdata('idEmpresa'));
 		return $this->db->count_all_results($table);
 	}
+
+    function getRespostas($id){
+        $this->db->where('idQuiz', $id);
+        $this->db->order_by('percentual', 'DESC');
+        return $this->db->get('quiz_respostas')->result();
+    }
+
+    function getTotalRespostas($id){
+        $this->db->where('idQuiz', $id);
+        return $this->db->count_all_results('quiz_respostas');
+    }
 }

@@ -8,8 +8,9 @@
 
             Perguntas do quiz: <h4 style="font-weight: bold;  color: red"> <? echo $quiz->descricao ?> </h4> <br><br>
 
-            <a href="<? echo base_url().'admin' ?>" class="btn btn-primary" style="float: left;"><i class="fa fa-arrow-left"></i> &nbsp;Voltar</a>
-            <a href="<? echo base_url().'admin/novaPergunta/'.$quiz->idQuiz ?>" class="btn btn-success" style="float: left; margin-left: 10px"> <i class="fa fa-plus"></i> &nbsp;Nova pergunta</a><br><br>
+            <a href="<? echo base_url().'admin' ?>" class="btn btn-secondary" style="float: left;"><i class="fa fa-arrow-left"></i> &nbsp;Voltar</a>
+            <a href="<? echo base_url().'admin/novaPergunta/'.$quiz->idQuiz ?>" class="btn btn-success" style="float: left; margin-left: 10px"> <i class="fa fa-plus"></i> &nbsp;Nova pergunta</a>
+            <a href="<? echo base_url().'admin/verRespostas/'.$quiz->idQuiz ?>" class="btn btn-primary" style="float: left; margin-left: 10px"> <i class="fa fa-check"></i> &nbsp;<? echo @$respostas ?> Respostas</a><br><br><br>
 
             <? if($perguntas){?>
 

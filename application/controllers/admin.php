@@ -88,7 +88,19 @@ class Admin extends CI_Controller {
         if($this->uri->segment(3)){
             $this->data['quiz'] = $this->admin_model->getById($this->uri->segment(3));
             $this->data['perguntas'] = $this->admin_model->getPerguntas($this->uri->segment(3));
+            $this->data['respostas'] = $this->admin_model->getTotalRespostas($this->uri->segment(3));
             $this->data['view'] = 'admin/listar_perguntas';
+            $this->load->view('tema/topo', $this->data);
+        }else{
+            redirect(base_url().'admin');
+        }        
+    }
+
+    public function verRespostas(){
+        if($this->uri->segment(3)){
+            $this->data['respostas'] = $this->admin_model->getRespostas($this->uri->segment(3));
+            $this->data['quiz'] = $this->admin_model->getById($this->uri->segment(3));
+            $this->data['view'] = 'admin/listar_respostas';
             $this->load->view('tema/topo', $this->data);
         }else{
             redirect(base_url().'admin');
