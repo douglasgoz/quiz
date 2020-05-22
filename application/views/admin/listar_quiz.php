@@ -17,17 +17,15 @@
                         <input type="hidden" name="idQuiz" value="<? echo $q->idQuiz ?>" />
                         <li class="list-group-item"> <? echo $q->descricao ?> 
                           <? if (($q->dataInicio <= date('Y-m-d H:i')) && ($q->dataFim >= date('Y-m-d H:i'))) {?>
-                              <span class="badge badge-success float-left"> Ativo </span>
-                              <span class="badge float-right" style="position: relative; bottom: 10px">
-                                  <a href="<? echo base_url().'admin/quiz/'.$q->idQuiz ?>" class="btn btn-success" style="padding: 5px 20px"><i class="fa fa-pencil"></i></a>
-                                  <a class="btn btn-danger excluirQuiz" idQuiz="<? echo $q->idQuiz ?>" style="padding: 5px 20px; color: white"><i class="fa fa-trash"></i></a>
-                              </span>
+                              <span class="badge badge-success float-left"> Ativo </span>                              
                           <? }else{ ?>
                               <span class="badge badge-danger float-left"> Inativo </span>
+                          <? } ?> 
                               <span class="badge float-right" style="position: relative; bottom: 10px">
+                                  <a href="<? echo base_url().'admin/quiz/'.$q->idQuiz ?>" class="btn btn-primary" style="padding: 5px 20px"><i class="fa fa-arrow-right"></i></a>
+                                  <a href="<? echo base_url().'admin/editarQuiz/'.$q->idQuiz ?>" class="btn btn-success" style="padding: 5px 20px"><i class="fa fa-pencil"></i></a>
                                   <a class="btn btn-danger excluirQuiz" idQuiz="<? echo $q->idQuiz ?>" style="padding: 5px 20px; color: white"><i class="fa fa-trash"></i></a>
                               </span>
-                          <? } ?> 
                         </li>
                   <? }
                 echo '</ul>';
@@ -81,5 +79,16 @@
         }, 1500); 
     }); 
   });
+</script>
+
+<script type="text/javascript">
+  <? if (@$_GET['status'] == 'editado'){ ?>
+    Swal.fire({
+      icon: 'success',
+      title: 'Quiz editado!',
+      showConfirmButton: false,
+      timer: 1500
+    });
+  <? } ?>
 </script>
 </html>

@@ -1,45 +1,58 @@
 <!doctype html>
 <html lang="pt-br">
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
 <body>
 
     <div class="container" style="margin-top: 3%; text-align: center;">
-        <div class="row justify-content-md-center">          
-        <div class="col-md-8">          
+        <div class="row justify-content-md-center">
+        <div class="col-md-12">
 
-            <h4 style="font-weight: bold; text-transform: uppercase;"> Adicionar Quiz </h4> <br>
+            <h4 style="font-weight: bold; text-transform: uppercase;"> Editando o quiz: </h4> 
+            <span style="color: red"><? echo $result->descricao ?></span><br><br>
 
-            <? if($quiz){?>
+            <div class="container" style="margin-top: 3%; text-align: center; margin-left: 15%">      
+              <div class="row justify-content-md-center">          
+                <div class="col-md-8"> 
 
-                <ul class="list-group">
-                  <? foreach ($quiz as $q) { ?>
-                      <form action="<? echo base_url()?>mapos/inicio" method="POST">
-                        <input type="hidden" name="idQuiz" value="<? echo $q->idQuiz ?>" />
-                        <li class="list-group-item"> <? echo $q->descricao ?> 
-                          <? if (($q->dataInicio <= date('Y-m-d')) && ($q->dataFim >= date('Y-m-d'))) {?>
-                              <span class="badge badge-success float-left"> Ativo </span>
-                              <span class="badge float-right" style="position: relative; bottom: 10px">
-                                  <button class="btn btn-success" type="submit" style="padding: 5px 20px"><i class="fa fa-pencil"></i></button>
-                                  <a class="btn btn-danger excluirQuiz" idQuiz="<? echo $q->idQuiz ?>" style="padding: 5px 20px; color: white"><i class="fa fa-trash"></i></a>
-                              </span>
-                          <? }else{ ?>
-                              <span class="badge badge-danger float-left"> Inativo </span>
-                              <span class="badge float-right" style="position: relative; bottom: 10px">
-                                  <a class="btn btn-danger excluirQuiz" idQuiz="<? echo $q->idQuiz ?>" style="padding: 5px 20px; color: white"><i class="fa fa-trash"></i></a>
-                              </span>
-                          <? } ?> 
-                        </li>
-                      </form>
-                  <? }
-                echo '</ul>';
-              }else{ ?>
+                   <form class="form-horizontal" action="<? echo base_url().'admin/editarInfoQuiz' ?>" method="POST">
+                    <input type="hidden" name="idQuiz" value="<? echo $result->idQuiz ?>" />
+                      <fieldset>
+                         <div class="form-group">
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon">Descrição: </span><input name="descricao" class="form-control" required="true" value="<? echo $result->descricao ?>" type="text"></div>
+                            </div>
+                          </div>
 
-                <ul class="list-group">
-                  <li class="list-group-item">
-                      Não há nenhum quiz disponível no momento... :(
-                  </li>
-                </ul>
+                          <div class="form-group">
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon">Data: </span><input name="data" class="form-control" required="true" value="<? echo date('d-m-Y', strtotime($result->dataInicio)) ?>" type="text"></div>
+                            </div>
+                          </div>
 
-              <?} ?>
+                          <div class="form-group">
+                            <div class="col-md-8 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon">Hora: </span><input name="hora" class="form-control" required="true" value="<? echo date('H:i', strtotime($result->dataInicio)) ?>" type="text"></div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="col-md-5 inputGroupContainer">
+                               <div class="input-group"><span class="input-group-addon">Tempo de resposta: </span><input name="tempo" placeholder="00:00" class="form-control" required="true" value="<? echo $result->tempo ?>" type="text"></div>
+                            </div>
+                          </div>
+                      </fieldset>
+                      <br><br>
+                      <div class="col-md-6" style="margin-left: 10%">
+                          <button class="btn btn-success" type="submit" style="width: 100%; padding: 10px 0"> Salvar </button>
+                      </div>
+                   </form>
+                </div>
+              </div>
+            </div>
 
         </div>
         </div> 

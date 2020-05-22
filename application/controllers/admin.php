@@ -74,6 +74,16 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function editarQuiz(){
+        if($this->uri->segment(3)){
+            $this->data['result'] = $this->admin_model->getById($this->uri->segment(3));
+            $this->data['view'] = 'admin/editar_quiz';
+            $this->load->view('tema/topo', $this->data);
+        }else{
+            redirect(base_url().'admin');
+        }        
+    }
+
     public function quiz(){
         if($this->uri->segment(3)){
             $this->data['quiz'] = $this->admin_model->getById($this->uri->segment(3));
@@ -113,6 +123,23 @@ class Admin extends CI_Controller {
             }else{
                 redirect(base_url().'admin');
             }
+        }
+    }
+
+    public function editarInfoQuiz(){
+        $id = $this->input->post('idQuiz');
+        $d = $this->input->post('data');
+        $h = $this->input->post('hora');
+        $data = date('Y-m-d H:i', strtotime($d.' '.$h));
+        if($id != null){
+            $dados = array(
+                'descricao' => $this->input->post('descricao'),
+                'dataInicio' => $data,
+                'tempo' => $this->input->post('tempo')
+            );
+
+            $this->admin_model->edit('quiz', $dados, 'idQuiz', $id);
+            redirect(base_url().'admin/quiz?status=editado');
         }
     }
 
