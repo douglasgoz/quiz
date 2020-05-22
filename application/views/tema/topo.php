@@ -91,7 +91,9 @@
       </header>
 
 
-  <? }else{ ?>
+  <? }else{ 
+
+    if(@$naoExibirMenu != 0){?>
 
       <nav class="navbar navbar-default so-mobile" role="navigation" style="margin: 0; padding: 0">
         <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow" style="background: #212121!important; color: white!important;">
@@ -116,7 +118,8 @@
         </nav>
       </header>
 
-  <? } ?>
+  <? }
+} ?>
 
 
 <div class="d-flex align-items-stretch">
