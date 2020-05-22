@@ -50,6 +50,7 @@ class Mapos extends CI_Controller {
 
         $this->data['idQuiz'] = $idQuiz;
         $this->data['resultados'] = $resultados;
+        $this->data['respostas'] = $this->mapos_model->getRespostas($idQuiz);
         $this->data['view'] = 'mapos/exibir_resultado';
         $this->load->view('tema/topo',  $this->data);      
     }

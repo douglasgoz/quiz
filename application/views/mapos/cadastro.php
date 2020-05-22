@@ -34,10 +34,10 @@
     </div>
 
     <div class="form-group">
-        <a onclick="verificar();" class="btn btn-primary btn-block"> Criar conta </a>
+        <a onclick="verificar();" class="btn btn-primary btn-block" style="background: #000; border-color: #000; color: white"> Criar conta </a>
     </div><br>
 
-    <p class="text-center">Já é cadastrado? <a href="<?php echo base_url() ?>">Faça o login</a> </p>                                                                 
+    <p class="text-center"><a href="<?php echo base_url() ?>"> <i class="fa fa-arrow-left"></i>&nbsp; Voltar para o login</a> </p>                                                                 
 </form>
 </article>
 </div>

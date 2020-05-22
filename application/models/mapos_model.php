@@ -92,4 +92,9 @@ class Mapos_model extends CI_Model {
         $this->db->limit(1);
         return $this->db->get('usuarios')->row();
     }
+
+    function getRespostas($id){
+        $this->db->where('idQuiz', $id);
+        return $this->db->get('quiz_perguntas')->result();
+    }
 }

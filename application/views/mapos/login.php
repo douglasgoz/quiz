@@ -40,15 +40,15 @@
               <form class="form-vertical" id="formLogin" method="post" action="<?php echo base_url()?>mapos/verificarLogin" role="login">
                 <div class="form-group">
                   <label for="nome" class="control-label sr-only">Nome</label>
-                  <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required>
+                  <input type="text" class="form-control" name="nome" id="nome" placeholder="@instagram" required>
                 </div>
                 <div class="form-group">
-                  <label for="senha" class="control-label sr-only">Password</label>
+                  <label for="senha" class="control-label sr-only">Senha</label>
                   <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button><br><br>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" style="background: #000; border-color: #000">LOGIN</button><br><br>
                 <div class="bottom text-center">
-                  <span class="helper-text"><i class="fa fa-plus" style="top: 1px; position: relative;"></i> &nbsp; <a href="<?php echo base_url() ?>mapos/cadastro">Crie uma conta</a></span>
+                  <span class="helper-text"><a href="<?php echo base_url() ?>mapos/cadastro" style="font-size: 18px"> <i class="fa fa-plus-circle"></i> &nbsp; Crie uma conta</a></span>
                 </div>
               </form>
             </div>

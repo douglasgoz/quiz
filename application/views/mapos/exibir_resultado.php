@@ -2,11 +2,34 @@
 <html lang="pt-br">
 <head>
   <link href="<? echo base_url() ?>assets/graficos/circle.css" rel="stylesheet">
+
+  <style>
+
+    /*   Desktop   */
+    @media only screen and (min-width: 768px) {
+      .respostasCorretas { margin-bottom: 50px; background: #248008; color: white; padding: 10px 50px; width: 60%; font-weight: bold; border-radius: 5px; font-size: 15px }
+      .numeroPergunta { width: 5%; font-size: 25px; font-weight: bold; background: #cecece; text-align: center; border-radius: 30% }
+      .pergunta { width: 90%; margin-left: 2% }
+      .num { position: relative; top: 5px }
+    }
+
+
+    /*   Mobile   */
+    @media only screen and (max-width: 768px) {
+      *{ font-size: 15px }
+      .respostasCorretas { margin-bottom: 50px; background: #248008; color: white; padding: 10px 50px; width: 100%; font-weight: bold; border-radius: 5px; font-size: 15px }
+      .numeroPergunta { width: 10%; font-weight: bold; background: #cecece; text-align: center; border-radius: 30% }
+      .pergunta { width: 85%; margin-left: 3%; }
+      .num { position: relative; top: 5px; font-size: 18px }
+      .botao { margin: 0 15% }
+    }
+
+</style>
 </head>
 
 <body>
     <div class="container">
-      <div class="row justify-content-md-center" style="margin-top: 50px">
+      <div class="row" style="margin: 20px 15%">
         <? 
         $certo = 0;
         $errado = 0;
@@ -46,10 +69,33 @@
                 </div>
             </div>
       </div> 
+      
+    </div>
+
+    <div class="container" style="margin-bottom: 100px">
+
+      <center><div class="respostasCorretas">RESPOSTAS CORRETAS:</div></center>
+
+      <? 
+      $x = 1;
+
+      foreach ($respostas as $r) { 
+        $resp = explode('|', $r->alternativas);?>
+        <div class="row" style="margin-bottom: 30px;">
+          <div class="numeroPergunta"><span class="num"><? echo $x ?></span></div>
+          <div class="pergunta">
+            <div style="font-weight: bold;"> <? echo $r->pergunta ?> </div>
+            <div style="color: green"> <? echo $resp[($r->resposta - 1)] ?> </div>
+          </div>
+        </div>
+      <? 
+      $x++;
+      }?>
 
       <div class="row justify-content-md-center" style="margin-top: 50px">
-          <a href="<? echo base_url() ?>" class="btn btn-success"> &nbsp; <i class="fa fa-arrow-left"></i> &nbsp; Voltar para a lista de quiz </a>
+          <a href="<? echo base_url() ?>" class="btn btn-danger botao"> &nbsp; <i class="fa fa-arrow-left"></i> &nbsp; Voltar para a lista de quiz </a>
       </div>
+
     </div>
 
 
