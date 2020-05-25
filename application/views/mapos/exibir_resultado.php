@@ -47,14 +47,16 @@
 
         $resultadoFinal = (($certo / $total) * 100);
 
-        $dados = array(
-            'idUsuario' => $this->session->userdata('id'),
-            'idQuiz' => $idQuiz,
-            'percentual' => substr($resultadoFinal, 0, 4),
-            'log' => date('Y-m-d')
-        );
+        if(!$this->mapos_model->verificarResposta($idQuiz, $this->session->userdata('id'))){
+            $dados = array(
+                'idUsuario' => $this->session->userdata('id'),
+                'idQuiz' => $idQuiz,
+                'percentual' => substr($resultadoFinal, 0, 4),
+                'log' => date('Y-m-d')
+            );
 
-        $this->mapos_model->add('quiz_respostas', $dados);
+            $this->mapos_model->add('quiz_respostas', $dados);
+        }
 
           if($resultadoFinal == 100){
             echo '<div class="c100 p'.substr($resultadoFinal, 0, 3).' big">';
@@ -69,6 +71,10 @@
                 </div>
             </div>
       </div> 
+
+      <div class="row justify-content-md-center" style="margin-bottom: 50px">
+          <a href="<? echo base_url() ?>" class="btn btn-danger botao"> &nbsp; <i class="fa fa-arrow-left"></i> &nbsp; Voltar para a lista de quiz </a>
+      </div>
       
     </div>
 
@@ -91,10 +97,6 @@
       <? 
       $x++;
       }?>
-
-      <div class="row justify-content-md-center" style="margin-top: 50px">
-          <a href="<? echo base_url() ?>" class="btn btn-danger botao"> &nbsp; <i class="fa fa-arrow-left"></i> &nbsp; Voltar para a lista de quiz </a>
-      </div>
 
     </div>
 

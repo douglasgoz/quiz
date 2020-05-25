@@ -162,6 +162,13 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function excluirRespostaIndividual(){
+        $id = $this->input->post('id');
+        if($id != null){
+            $this->admin_model->excluirRespostaIndividual($id);
+        }
+    }
+
     public function excluirPergunta(){
         $id = $this->input->post('id');
         if($id != null){

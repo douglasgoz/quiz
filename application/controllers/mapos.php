@@ -32,7 +32,7 @@ class Mapos extends CI_Controller {
 
         $this->data['quiz'] = $this->mapos_model->getQuiz($idQuiz);
         $this->data['questions'] = $this->mapos_model->getQuestions($idQuiz);
-        $this->data['naoExibirMenu'] = 0;
+        $this->data['naoExibirMenu'] = 1;
         $this->data['view'] = 'mapos/exibir_quiz';
         $this->load->view('tema/topo',  $this->data);      
     }
