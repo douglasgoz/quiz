@@ -12,19 +12,20 @@
 
                 <ul class="list-group">
                   <? foreach ($quiz as $q) { ?>
-                      <form action="<? echo base_url()?>mapos/inicio" method="POST">
-                        <input type="hidden" name="idQuiz" value="<? echo $q->idQuiz ?>" />
+                      <!-- <form action="<? echo base_url()?>mapos/inicio" method="POST">
+                        <input type="hidden" name="idQuiz" value="<? echo $q->idQuiz ?>" /> -->
                         <li class="list-group-item"> <? echo $q->descricao ?>                           
                             <? if(!$this->mapos_model->buscarRespostas($q->idQuiz)){ ?>
                                 <span class="badge badge-success float-right">
-                                <button class="btn btn-success" type="submit" style="padding: 0 20px"> Iniciar &nbsp; <i class="fa fa-arrow-right"></i></button>
+                                <!-- <button class="btn btn-success" type="submit" style="padding: 0 20px"> Iniciar &nbsp; <i class="fa fa-arrow-right"></i></button> -->
+                                <a href="<? echo base_url().'mapos/inicio?q='.$q->idQuiz ?>" class="btn btn-success" style="padding: 0 20px"> Iniciar &nbsp; <i class="fa fa-arrow-right"></i></a>
                                 </span>
                             <? }else { ?>                                
-                                <span class="badge badge-success float-right" style="padding: 5px 5px"><? echo $this->mapos_model->buscarRespostas($q->idQuiz)->percentual ?> %</span>
-                                <span class="badge badge-danger float-right" style="padding: 5px">Você já respondeu este quiz</span>
+                                <span class="badge badge-success float-right" style="padding: 5px 10px; font-size: 15px"><? echo $this->mapos_model->buscarRespostas($q->idQuiz)->percentual ?> %</span>
+                                <span class="badge badge-danger float-right" style="padding: 5px 10px; margin: 0 10px; font-size: 12px">Você já respondeu este quiz</span>
                             <? } ?>                          
                         </li>
-                      </form>
+                      <!-- </form> -->
                   <? }
                 echo '</ul>';
               }else{ ?>

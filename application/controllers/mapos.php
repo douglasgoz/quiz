@@ -24,12 +24,13 @@ class Mapos extends CI_Controller {
             redirect('mapos/login');
         }
 
-        $idQuiz = $this->input->post('idQuiz');
-
-        if(!$idQuiz){
+        if(!$this->input->get('q')){
             redirect('mapos');
         }
 
+        $idQuiz = $this->input->get('q');
+
+        $this->data['idQuiz'] = $idQuiz;
         $this->data['quiz'] = $this->mapos_model->getQuiz($idQuiz);
         $this->data['questions'] = $this->mapos_model->getQuestions($idQuiz);
         $this->data['naoExibirMenu'] = 1;

@@ -34,7 +34,7 @@
         $certo = 0;
         $errado = 0;
         $total = 0;
-        $resultado = explode(',', $_POST['resultados']);
+        $resultado = explode(',', $resultados);
 
         foreach ($resultado as $r) {
           if($r == 'Certo'){
@@ -47,22 +47,18 @@
 
         $resultadoFinal = (($certo / $total) * 100);
 
-        if(!$this->mapos_model->verificarResposta($idQuiz, $this->session->userdata('id'))){
-            $dados = array(
-                'idUsuario' => $this->session->userdata('id'),
-                'idQuiz' => $idQuiz,
-                'percentual' => substr($resultadoFinal, 0, 4),
-                'log' => date('Y-m-d')
-            );
+        $dados = array(
+            'percentual' => substr($resultadoFinal, 0, 4),
+            'log' => date('Y-m-d')
+        );
 
-            $this->mapos_model->add('quiz_respostas', $dados);
-        }
+        $this->mapos_model->finalizarResultado($dados, $idQuiz, $this->session->userdata('id'));
 
-          if($resultadoFinal == 100){
-            echo '<div class="c100 p'.substr($resultadoFinal, 0, 3).' big">';
-          }else{
-            echo '<div class="c100 p'.substr($resultadoFinal, 0, 2).' big">';
-          }?>
+        if($resultadoFinal == 100){
+          echo '<div class="c100 p'.substr($resultadoFinal, 0, 3).' big">';
+        }else{
+          echo '<div class="c100 p'.substr($resultadoFinal, 0, 2).' big">';
+        }?>
             
                 <span><? echo substr($resultadoFinal, 0, 4).'%' ?></span>
                 <div class="slice">

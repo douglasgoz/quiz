@@ -36,13 +36,11 @@ class Mapos_model extends CI_Model {
     }
 
     function getQuiz($id){
-        // $this->db->where('dataInicio <', date('Y-m-d'));
         $this->db->where('idQuiz', $id);
         return $this->db->get('quiz')->row();
     }
 
     function getQuestions($id){
-        // $this->db->where('dataInicio <', date('Y-m-d'));
         $this->db->where('idQuiz', $id);
         return $this->db->get('quiz_perguntas')->result();
     }
@@ -102,5 +100,22 @@ class Mapos_model extends CI_Model {
         $this->db->where('idQuiz', $idQuiz);
         $this->db->where('idUsuario', $idUsuario);
         return $this->db->get('quiz_respostas')->result();
+    }
+
+    function finalizarResultado($dados, $idQuiz, $idUsuario){
+        $this->db->where('idQuiz', $idQuiz);
+        $this->db->where('idUsuario', $idUsuario);
+        $this->db->update('quiz_respostas', $dados);
+        if ($this->db->affected_rows() >= 0){
+            return TRUE;
+        }       
+        return FALSE;       
+    }
+
+    function verificarDisponibilidadeDoQuiz($idQuiz){
+        $this->db->where('idQuiz', $idQuiz);
+        $this->db->where('dataInicio <=', date('Y-m-d H:i'));
+        $this->db->where('dataFim >=', date('Y-m-d H:i'));
+        return $this->db->get('quiz')->result();
     }
 }

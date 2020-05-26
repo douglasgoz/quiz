@@ -24,39 +24,35 @@
     </style>
 </head>
 
+<?
+
+if(!$this->mapos_model->verificarDisponibilidadeDoQuiz($this->input->get('q'))){
+  redirect(base_url());
+}
+
+if(!$this->mapos_model->verificarResposta($idQuiz, $this->session->userdata('id'))){
+    $dados = array(
+        'idUsuario' => $this->session->userdata('id'),
+        'idQuiz' => $idQuiz,
+        'percentual' => 0,
+        'log' => date('Y-m-d')
+    );
+
+    $this->mapos_model->add('quiz_respostas', $dados);
+}else{
+    redirect(base_url());
+}
+?>
+
 <body id="body" onload="relogio()">
     <div class="container">
         <div class="row">          
         <div class="col-sm-10 col-sm-offset-1">
           <form id="formulario" action="<? base_url()?>resultado" method="POST">
               <input type="hidden" name="resultados" id="resultadosDoQuiz" value="" />
-              <input type="hidden" name="idQuiz" id="idQuiz" value="<? echo $_POST['idQuiz'] ?>" />
+              <input type="hidden" name="idQuiz" id="idQuiz" value="<? echo $idQuiz ?>" />
           </form>
-                  <? 
-                  /*
-                  foreach ($questions as $r) {?>
-
-                        <div class="wizard-header">                          
-                            <h3 style="background: #fceab1; padding-top: 20px"> <? echo $r->pergunta ?> </h3><br>                          
-                        </div>
-
-                        <fieldset id="pergunta<? echo $r->idPergunta ?>">
-                          <div class="quiz" id="quiz" data-toggle="buttons">
-                              <? 
-                              $alternativas = explode('|', $r->alternativas);
-                              $y = 1;  // Controle da opção selecionada
-                              foreach ($alternativas as $a) { ?>
-                                <div class="col-md-10 col-sm-10 col-sm-offset-1 ttt btn-block" data-value="<? echo $y ?>">
-                                    <label class="btn btn-primary btn-lg btn-block quiz-radio" style="width: 100%"><input type="radio" id="p<? echo $r->idPergunta?>" name="p<? echo $r->idPergunta ?>" value="<? echo $y ?>" style="visibility: hidden;" /><? echo $a ?></label>
-                                </div>
-                              <?
-                                 $y++;
-                              } ?>
-                          </div>
-                        </fieldset>
-
-                  <? } ?>
-                  */
+                  <?
 
                   $numeroPergunta = 1;
                   $respostas = array();
@@ -220,7 +216,6 @@
                     results.push('Errado');
                   }
                   if(pergunta == pTotal){
-                    // alert(results);
                     document.getElementById('resultadosDoQuiz').value = results;
                     document.getElementById('formulario').submit();
                   }
