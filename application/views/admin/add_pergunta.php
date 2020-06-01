@@ -23,6 +23,12 @@
 
                       <div class="form-group">
                         <div class="col-md-8 inputGroupContainer">
+                           <div class="input-group"><span class="input-group-addon">Link da Imagem: </span><input name="imagem" class="form-control" placeholder="Deixar vazio caso não tenha imagem" type="text"></div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="col-md-8 inputGroupContainer">
                            <div class="input-group"><span class="input-group-addon">Alternativa <b style="color: red">1</b>: </span><input name="a1" class="form-control" required="true" value="" type="text"></div>
                         </div>
                       </div>

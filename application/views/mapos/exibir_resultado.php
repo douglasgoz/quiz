@@ -28,6 +28,7 @@
 </head>
 
 <body>
+  <? if($this->mapos_model->verificarResultado($idQuiz) == 'n'){ ?>
     <div class="container">
       <div class="row" style="margin: 20px 15%">
         <? 
@@ -95,6 +96,14 @@
       }?>
 
     </div>
+
+  <? }else{
+    echo '<br><br><br><center><h3>Você já respondeu este quiz</h3><br><br>
+    <div class="row justify-content-md-center" style="margin-bottom: 50px">
+          <a href="'.base_url().'" class="btn btn-success botao"> &nbsp; <i class="fa fa-arrow-left"></i> &nbsp; Voltar para a lista de quiz </a>
+      </div>
+      </center>';
+  }?>
 
 
 </body>

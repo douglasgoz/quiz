@@ -34,7 +34,7 @@ if(!$this->mapos_model->verificarResposta($idQuiz, $this->session->userdata('id'
     $dados = array(
         'idUsuario' => $this->session->userdata('id'),
         'idQuiz' => $idQuiz,
-        'percentual' => 0,
+        'percentual' => 'n',
         'log' => date('Y-m-d')
     );
 
@@ -75,8 +75,11 @@ if(!$this->mapos_model->verificarResposta($idQuiz, $this->session->userdata('id'
                     }?>
                     <div class="card wizard-card" data-color="green" id="wizard">                   
                     <? echo '<div style="text-align: center;">Pergunta <b>'. $numeroPergunta. '</b> de <b>' .count($questions). '</b></div>'; ?>
-                        <div class="wizard-header">                          
-                            <h3 style="background: #fceab1; padding-top: 20px"> <? echo $r->pergunta ?> </h3><br>                          
+                        <div class="wizard-header">
+                            <h3 style="background: #fceab1; padding-top: 20px"> <? echo $r->pergunta ?> </h3><br><br>
+                            <? if($r->imagem){ ?>
+                                <img src="<? echo $r->imagem ?>" style="width: 100%; height: auto" />
+                            <? } ?><br><br>
                         </div>
 
                         <center><div class="col-md-12 tempo" id="tempo<? echo $numeroPergunta ?>"> </div></center><br>
@@ -109,7 +112,7 @@ if(!$this->mapos_model->verificarResposta($idQuiz, $this->session->userdata('id'
                             if($numeroPergunta == count($questions)){                              
                               echo '<a onclick="mudarPergunta('.$numeroPergunta.')" class="btn btn-fill btn-primary" style="padding: 10px 50px">Finalizar &nbsp;<i class="fa fa-check"></i></a></div>';
                             }else{
-                              echo '<a onclick="mudarPergunta('.$numeroPergunta.')" class="btn btn-fill btn-success" style="padding: 10px 50px">Próximo &nbsp;<i class="fa fa-arrow-right"></i></a></div>';
+                              echo '<a onclick="mudarPergunta('.$numeroPergunta.')" class="btn btn-fill btn-success" style="padding: 10px 50px">Confirmar &nbsp;<i class="fa fa-arrow-right"></i></a></div>';
                             }?>
                         </center>
                     </div>

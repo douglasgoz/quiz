@@ -118,4 +118,10 @@ class Mapos_model extends CI_Model {
         $this->db->where('dataFim >=', date('Y-m-d H:i'));
         return $this->db->get('quiz')->result();
     }
+
+    function verificarResultado($idQuiz){
+        $this->db->where('idQuiz', $idQuiz);
+        $this->db->where('idUsuario', $this->session->userdata('id'));
+        return $this->db->get('quiz_respostas')->row('percentual');
+    }
 }

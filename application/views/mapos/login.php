@@ -6,9 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/login/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/login/vendor/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/login/vendor/linearicons/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/login/css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
   <style type="text/css">
@@ -48,7 +46,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block" style="background: #000; border-color: #000">LOGIN</button><br><br>
                 <div class="bottom text-center">
-                  <span class="helper-text"><a href="<?php echo base_url() ?>mapos/cadastro" style="font-size: 18px"> <i class="fa fa-plus-circle"></i> &nbsp; Crie uma conta</a></span>
+                  <span class="helper-text"><a href="<?php echo base_url() ?>mapos/cadastro" style="font-size: 18px"> <i class="fa fa-plus-circle"></i> &nbsp; Crie uma conta</a></span><br><br>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cadastrar" style="font-size: 12px; color: white"> Como se cadastrar</button>
                 </div>
               </form>
             </div>
@@ -57,8 +56,35 @@
     </div>
   </div>
 
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <div class="modal fade bd-example-modal-lg" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLong" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <center><b style="color: red">Para efetuar o cadastro é super fácil:</b> <br><br></center>
+        <ol>
+          <li>Acesse o botão CRIE UMA CONTA</li>
+          <li>Você será direcionado para página de casdastro</li>
+          <li>Insira seu usuário do Instagram (<span style="color: red">Ex: @paulo</span>) (<span style="color: red">Não esquecer de colocar o @</span>)</span></li>
+          <li>Insira seu email (<span style="color: red">Ex: Paulo@paulo.com.br</span>)</li>
+          <li>Crie uma senha e pronto!!</li>
+        </ol> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <? if(@$_GET['acao'] == 'cadastro'){ ?>

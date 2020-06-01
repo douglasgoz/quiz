@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<title>Quiz da Identidade Geek</title>
+<title>Identidade Quiz</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="">
@@ -97,6 +97,7 @@
 
       <nav class="navbar navbar-default so-mobile" role="navigation" style="margin: 0; padding: 0">
         <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow" style="background: #212121!important; color: white!important;">
+          <li style="margin-left: 10px"><a data-toggle="modal" data-target="#como-jogar"><i class="icones-mobile fa fa-question-circle"></i></a></li><br>
           <li style="margin-left: 10px"><a href="<? echo base_url() ?>mapos"><i class="icones-mobile fa fa-home"></i></li><br>
           <li style="margin-left: 10px"><a href="<? echo base_url() ?>admin/ranking"><i class="icones-mobile fa fa-trophy"></i></li><br>
             <li style="margin-left: 10px"><a href="<? echo base_url() ?>mapos/sair"><i class="icones-mobile fa fa-power-off"></i></li><br>
@@ -104,7 +105,7 @@
       </nav>
 
       <header class="header no-mobile">
-        <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow" style="background: #212121!important; color: white!important"><a href="<?php echo base_url()?>" class="navbar-brand font-weight-bold text-uppercase text-base" style="color: white">Quiz da Identidade Geek</a>
+        <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow" style="background: #212121!important; color: white!important"><a href="<?php echo base_url()?>" class="navbar-brand font-weight-bold text-uppercase text-base" style="color: white">Identidade Quiz</a>
           <li style="margin-left: 50px"><a href="<? echo base_url() ?>admin/ranking"><i class="fa fa-trophy"></i> &nbsp;Ver ranking</a></li>
           <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
             <li class="nav-item dropdown ml-auto no-mobile"><a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" style="color: white"><?php echo $this->mapos_model->getUsuario($this->session->userdata('id'))->nome ?> </a>
@@ -124,15 +125,50 @@
 
 <div class="d-flex align-items-stretch">
     <div class="page-holder w-100 d-flex flex-wrap">
-        <div class="container-fluid px-xl-5" style="background: none">
+        <div class="container-fluid px-xl-5" style="background: none"><br>
           <?php if(isset($view)){echo $this->load->view($view);}?> 
         </div>
     </div>
 </div>
 
+
+<div class="modal fade bd-example-modal-lg" id="como-jogar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLong" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <center><b style="color: red">Como Jogar:</b> <br><br></center>
+        <ol>
+          <li>O quiz só poderá ser feito uma única vez</li><br>
+          <li>Você terá  20 segundos por questão para responder</li><br>
+          <li>Em média serão 15 perguntas de múltipla escolha por quiz, cabendo aos administradores aumentarem ou reduzirem a quantidade de questões quando acharem necessário</li><br>
+          <li>Caso o tempo estoure e não haja marcação de alternativa, será considerado como pontuação 0;</li><br>
+          <li>A plataforma adota a velocidade de resposta, portanto quem responder mais rápido ganha uma pontuação maior, porém é necessário acertar a questão</li><br>
+          <li>Os quizes possuem temas variados (animes, desenhos, games, filmes, séries...)</li><br>
+          <li>Algumas rodadas poderão ter temas específicos</li><br>
+          <li>Os dias de quiz ativo serão (inicialmente) terças-feiras, quintas-feiras e domingos, às 21:00h de acordo com o horário de onde se origina o quiz</li><br>
+          <li>Uma campanha dura 1 mês</li><br>
+          <li>Os pontos são acumulativos, sempre há chance de ganhar e ultrapassar quem estiver na frente. Portanto não se ausente durante os dias que tiverem o quiz</li><br>
+          <li>A plataforma possui um sistema anti-fraude, portanto, evite atualizar a página, usar o botão voltar/avançar do navegador ou entrar através do histórico do navegador. Caso isso aconteça, o quiz irá ZERAR (pontuação 0)</li><br>
+          <li>A conseqüência de ZERAR o quiz, também ocorrerá caso você desconecte. Se sua internet “falhar”, também irá acontecer o mesmo. Portanto avalie antes como está a sua internet</li>
+        </ol> 
+        <br>
+        <center><b style="color: red">BOA SORTE!!!</b></center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
-<script src="<?php echo base_url()?>assets/js/popper.min.js"> </script>
-<script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </body>

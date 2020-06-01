@@ -40,7 +40,13 @@ class Admin extends CI_Controller {
     }
 
     public function ranking(){
-        $this->data['ranking'] = $this->admin_model->ranking();
+        $data = date('Y-m-d', strtotime($this->admin_model->dataUltimoRanking()));
+
+        if(@$_GET['rodada']){
+            $this->data['ranking'] = $this->admin_model->rankingRodada($data);
+        }else{
+            $this->data['ranking'] = $this->admin_model->ranking();
+        }    
         $this->data['view'] = 'admin/ranking';
         $this->load->view('tema/topo', $this->data);
     }
@@ -124,6 +130,7 @@ class Admin extends CI_Controller {
             $dados = array(
                 'idQuiz' => $id,
                 'pergunta' => $this->input->post('pergunta'),
+                'imagem' => $this->input->post('imagem'),
                 'alternativas' => $alternativas,
                 'resposta' => $this->input->post('resposta')
             );
@@ -158,6 +165,8 @@ class Admin extends CI_Controller {
     public function excluirQuiz(){
         $id = $this->input->post('id');
         if($id != null){
+            $this->admin_model->excluirRespostasDoQuiz($id);
+            $this->admin_model->excluirPerguntasDoQuiz($id);
             $this->admin_model->excluirQuiz($id);
         }
     }

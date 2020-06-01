@@ -4,10 +4,16 @@
 
     <div class="container" style="margin-top: 3%; text-align: center;">
         <div class="row justify-content-md-center">          
-        <div class="col-md-8">          
-
-            <h4 style="font-weight: bold; text-transform: uppercase;"> Ranking </h4> <br>
-
+        <div class="col-md-8">
+            
+            <? if(@$_GET['rodada']){?>
+                <h4 style="font-weight: bold; text-transform: uppercase;"> Ranking &nbsp;da &nbsp;Rodada </h4><br>
+                <a href="<? echo base_url() ?>admin/ranking" class="btn btn-success" style="font-size: 12px">Ver o Ranking Geral</a>
+            <? } else { ?>
+                <h4 style="font-weight: bold; text-transform: uppercase;"> Ranking Geral </h4><br>
+                <a href="<? echo base_url() ?>admin/ranking?rodada=1" class="btn btn-success" style="font-size: 12px">Ver o Ranking da Rodada</a>
+            <? } ?>
+            <br><br>
             <? if($ranking){?>
 
                 <ul class="list-group">

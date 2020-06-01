@@ -6,16 +6,36 @@ class Admin_model extends CI_Model {
     }
 
     function getQuiz(){
+        $this->db->order_by('idQuiz', 'DESC');
         return $this->db->get('quiz')->result();
     }
 
+    function dataUltimoRanking(){
+        $this->db->limit(1);
+        $this->db->order_by('idQuiz', 'DESC');
+        return $this->db->get('quiz')->row()->dataInicio;
+    }
+
     function ranking(){
+        $this->db->where('log >=', date('Y-m').'-1');
+        $this->db->where('log <=', date('Y-m').'-31');
         $this->db->select(
             '*, 
             sum(percentual)'
         );
         $this->db->group_by('idUsuario');
         $this->db->order_by('sum(percentual)', 'DESC');
+        return $this->db->get('quiz_respostas')->result();
+    }
+
+    function rankingRodada($data){        
+        $this->db->select(
+            '*, 
+            sum(percentual)'
+        );
+        $this->db->group_by('idUsuario');
+        $this->db->order_by('sum(percentual)', 'DESC');
+        $this->db->where('log', $data);
         return $this->db->get('quiz_respostas')->result();
     }
 
@@ -146,5 +166,15 @@ class Admin_model extends CI_Model {
     function getTotalRespostas($id){
         $this->db->where('idQuiz', $id);
         return $this->db->count_all_results('quiz_respostas');
+    }
+
+    function excluirRespostasDoQuiz($idQuiz){
+        $this->db->where('idQuiz', $idQuiz);
+        $this->db->delete('quiz_respostas');
+    }
+
+    function excluirPerguntasDoQuiz($idQuiz){
+        $this->db->where('idQuiz', $idQuiz);
+        $this->db->delete('quiz_perguntas');
     }
 }
