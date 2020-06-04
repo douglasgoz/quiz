@@ -10,32 +10,28 @@ class Admin_model extends CI_Model {
         return $this->db->get('quiz')->result();
     }
 
-    function dataUltimoRanking(){
+    function idUltimoRanking(){
         $this->db->limit(1);
         $this->db->order_by('idQuiz', 'DESC');
-        return $this->db->get('quiz')->row()->dataInicio;
+        return $this->db->get('quiz')->row()->idQuiz;
     }
 
     function ranking(){
-        $this->db->where('log >=', date('Y-m').'-1');
+        $this->db->where('log >=', date('Y-m').'-01');
         $this->db->where('log <=', date('Y-m').'-31');
         $this->db->select(
             '*, 
             sum(percentual)'
         );
         $this->db->group_by('idUsuario');
-        $this->db->order_by('sum(percentual)', 'DESC');
+        // $this->db->order_by('sum(percentual)', 'DESC');
+        $this->db->order_by('percentual', 'DESC');
         return $this->db->get('quiz_respostas')->result();
     }
 
-    function rankingRodada($data){        
-        $this->db->select(
-            '*, 
-            sum(percentual)'
-        );
-        $this->db->group_by('idUsuario');
-        $this->db->order_by('sum(percentual)', 'DESC');
-        $this->db->where('log', $data);
+    function rankingRodada($id){        
+        $this->db->order_by('percentual', 'DESC');
+        $this->db->where('idQuiz', $id);
         return $this->db->get('quiz_respostas')->result();
     }
 
@@ -59,6 +55,8 @@ class Admin_model extends CI_Model {
     function getPontosUsuario($id){
         $this->db->select_sum('percentual');
         $this->db->from('quiz_respostas');
+        $this->db->where('log >=', date('Y-m').'-01');
+        $this->db->where('log <=', date('Y-m').'-31');
         $this->db->where('idUsuario', $id);
         return $this->db->get()->row()->percentual;
     }

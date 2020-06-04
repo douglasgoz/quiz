@@ -40,10 +40,10 @@ class Admin extends CI_Controller {
     }
 
     public function ranking(){
-        $data = date('Y-m-d', strtotime($this->admin_model->dataUltimoRanking()));
+        $idQuiz = $this->admin_model->idUltimoRanking();
 
         if(@$_GET['rodada']){
-            $this->data['ranking'] = $this->admin_model->rankingRodada($data);
+            $this->data['ranking'] = $this->admin_model->rankingRodada($idQuiz);
         }else{
             $this->data['ranking'] = $this->admin_model->ranking();
         }    
