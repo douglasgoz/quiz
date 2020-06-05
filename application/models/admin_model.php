@@ -26,11 +26,13 @@ class Admin_model extends CI_Model {
         $this->db->group_by('idUsuario');
         // $this->db->order_by('sum(percentual)', 'DESC');
         $this->db->order_by('percentual', 'DESC');
+        $this->db->order_by('idUsuario', 'DESC');
         return $this->db->get('quiz_respostas')->result();
     }
 
     function rankingRodada($id){        
         $this->db->order_by('percentual', 'DESC');
+        $this->db->order_by('idUsuario', 'DESC');
         $this->db->where('idQuiz', $id);
         return $this->db->get('quiz_respostas')->result();
     }
