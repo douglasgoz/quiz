@@ -26,7 +26,12 @@
                   <? foreach ($respostas as $q) { ?>
                     <tr>
                       <td><? echo $this->admin_model->getNomeUsuario($q->idUsuario)->nome ?></td>
-                      <td><? echo $q->percentual ?> pontos</td>
+                      <? if($q->percentual == 'n'){
+                        echo '<td>Não finalizado</td>';
+                      }else{
+                        echo '<td>'.$q->percentual.' pontos</td>';
+                      }
+                      ?>
                       <td><a class="btn btn-danger excluirQuiz" idQuiz="<? echo $q->idResposta ?>" style="padding: 5px 20px; color: white"><i class="fa fa-trash"></i></a></td>
                     </tr>
                   <? }

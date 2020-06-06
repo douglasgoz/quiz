@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         *{ font-family: 'Open Sans', sans-serif; }
-        .tempo { background: red; color: white; font-size: 30px; text-align: center; font-weight: 800; z-index: 10 }
+        .tempo { background: url(<? echo base_url().'assets/img/relogio.png'?>) no-repeat center; color: red; font-size: 30px; text-align: center; font-weight: 800; z-index: 10; height: 100% }
         .quiz-radio { font-size: 13px!important; text-align: left!important; font-weight: bold; white-space:nowrap!important; }
         .perguntaAtiva { display: inline; }
         .perguntaInativa { display: none; }
@@ -82,7 +82,9 @@ if(!$this->mapos_model->verificarResposta($idQuiz, $this->session->userdata('id'
                             <? } ?><br><br>
                         </div>
 
-                        <center><div class="col-md-12 tempo" id="tempo<? echo $numeroPergunta ?>"> </div></center><br>
+                        <center>
+                          <div class="col-md-12 tempo" id="tempo<? echo $numeroPergunta ?>"> </div>
+                        </center><br>
 
                         <fieldset id="pergunta<? echo $r->idPergunta ?>" style="margin-bottom: 30px">
                           <div class="quiz" id="quiz" data-toggle="buttons">
