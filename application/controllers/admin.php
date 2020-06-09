@@ -43,11 +43,12 @@ class Admin extends CI_Controller {
         $idQuiz = $this->admin_model->idUltimoRanking();
 
         if(@$_GET['rodada']){
-            $this->data['ranking'] = $this->admin_model->rankingRodada($idQuiz);
+            $this->data['rankingRodada'] = $this->admin_model->rankingRodada($idQuiz);
+            $this->data['view'] = 'admin/rankingRodada';
         }else{
             $this->data['ranking'] = $this->admin_model->ranking();
-        }    
-        $this->data['view'] = 'admin/ranking';
+            $this->data['view'] = 'admin/ranking';
+        }
         $this->load->view('tema/topo', $this->data);
     }
 

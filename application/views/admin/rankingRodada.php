@@ -5,25 +5,25 @@
     <div class="container" style="margin-top: 3%; text-align: center;">
         <div class="row justify-content-md-center">          
         <div class="col-md-8">
-            
-            <h4 style="font-weight: bold; text-transform: uppercase;"> Ranking Geral </h4><br>
-            <a href="<? echo base_url() ?>admin/ranking?rodada=1" class="btn btn-success" style="font-size: 12px">Ver o Ranking da Rodada</a>
-                
+
+            <h4 style="font-weight: bold; text-transform: uppercase;"> Ranking &nbsp;da &nbsp;Rodada </h4><br>
+            <a href="<? echo base_url() ?>admin/ranking" class="btn btn-success" style="font-size: 12px">Ver o Ranking Geral</a>
             <br><br>
-            <? if($ranking){?>
+            
+            <? 
+              if($rankingRodada){?>
 
                 <ul class="list-group">
                   <? 
                   $controle = 1;
-                  foreach ($ranking as $q) { ?>
+                  foreach ($rankingRodada as $q) { ?>
                         <li class="list-group-item"> <? echo $this->admin_model->getNomeUsuario($q->idUsuario)->nome ?>
                             <span class="badge badge-primary float-right" style="position: relative; right: 15%">
                               <? echo $controle ?> °
                             </span>     
                             <span class="badge badge-success float-right" style="position: relative;">
-                                <? 
-                                $resultado = explode('.', $this->admin_model->getPontosUsuario($q->idUsuario));
-                                echo $resultado[0]?>
+                                <?
+                                echo $q->percentual?>
                             </span>          
                         </li>
                   <? 
@@ -31,7 +31,7 @@
                   }
 
                 echo '</ul>';
-              }else{ ?>
+              }else if(!$rankingRodada){ ?>
 
                 <ul class="list-group">
                   <li class="list-group-item">
